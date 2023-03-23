@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Card from "../component/Card";
+import { BasketContext } from "../context/CartContext";
 import data from "../data";
-import { ProductType } from "../types/ProductTpye";
+interface ProductType {
+  id: number;
+  title: string;
+  price: number;
+  url: string;
+  name: string;
+  type: string;
+}
 
 const Home = () => {
+  const { cart, setCart, pageName,setPageName } = useContext(BasketContext);
+  useEffect(() => {
+    setPageName("Home");
+  }, []);
+  console.log(pageName);
+  console.log(cart);
+
   return (
-    <div>
+    <div className="border flex flex-wrap gap-4 justify-center">
       {data.map((product: ProductType, index: number) => (
-        <Card product={product}/>
+        <Card product={product} />
       ))}
     </div>
   );

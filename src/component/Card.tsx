@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaTruck } from "react-icons/fa";
 import { RiHeartAddLine } from "react-icons/ri";
-import { ProductType } from "../types/ProductTpye";
+import { BasketContext } from "../context/CartContext";
+interface ProductType{
+    id:number;
+    title:string;
+    price:number;
+    url:string;
+    name:string;
+    type:string
+}
 interface ıProps {
   product: ProductType;
 }
-
 const Card = ({ product }: ıProps) => {
-  console.log(product);
+  const { addBasket,pageName } = useContext(BasketContext);
   return (
     <div>
       <div className="bg-orange-400 flex flex-col justify-center items-center w-[300px] h-[400px] border-2 border-orange-800 mx-auto my-4 relative shadow-md shadow-orange-900 rounded-md">
@@ -26,10 +33,13 @@ const Card = ({ product }: ıProps) => {
           <button className="py-1 px-2 bg-slate-400 rounded-lg shadow-sm shadow-slate-200  text-slate-800  font-bold text-md active:scale-95">
             İncele
           </button>
-          <span className="py-1 px-6 bg-slate-400 rounded-lg shadow-sm shadow-slate-200  text-slate-800  font-bold text-md active:scale-95"></span>
-          <button className="py-1 px-2 bg-slate-400 rounded-lg shadow-sm shadow-slate-200 text-slate-800  font-bold text-md active:scale-95">
+          <span className="py-1 px-6 bg-slate-400 rounded-lg shadow-sm shadow-slate-200  text-slate-800  font-bold text-md active:scale-95">
+            0
+          </span>
+          {pageName !== "Cart" ? (<button className="py-1 px-2 bg-slate-400 rounded-lg shadow-sm shadow-slate-200 text-slate-800  font-bold text-md active:scale-95" 
+          onClick={()=>addBasket(product)}>
             Sepete ekle
-          </button>
+          </button>) : null}
         </div>
       </div>
     </div>
