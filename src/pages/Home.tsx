@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import Card from "../component/Card";
+import ShowModal from "../component/ShowModal";
 import { BasketContext } from "../context/CartContext";
 import data from "../data";
 interface ProductType {
@@ -22,7 +23,10 @@ const Home = () => {
   return (
     <div className="border flex flex-wrap gap-4 justify-center">
       {data.map((product: ProductType, index: number) => (
+        <>
         <Card product={product} />
+        </>
+        
       ))}
     </div>
   );
