@@ -8,9 +8,12 @@ const Cart = () => {
   }, []);
   console.log(pageName)
   return (
-    <div className="border flex flex-wrap gap-4 justify-center">
+    <div className="flex flex-wrap gap-4 justify-center">
       {cart.map((product: any) => (
+        <>
         <Card product={product} />
+        </>
+        
       ))}
     </div>
   );

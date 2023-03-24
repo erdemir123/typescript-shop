@@ -12,8 +12,8 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-      <Route path="" element={<PrivateRouter />}>
-        <Route path="/home" element={<Home />} />
+      <Route path="/" element={<PrivateRouter />}>
+        <Route index element={<Home />} />
         {/* <Route path="/store" element={<Store />} /> */}
         <Route path="/about" element={<About />} />
         <Route path="/cart" element={<Cart />} />
